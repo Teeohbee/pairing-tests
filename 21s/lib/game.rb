@@ -3,7 +3,7 @@ require_relative 'player'
 
 class Game
 
-  attr_reader :deck
+  attr_reader :deck, :player_one, :player_two
 
   def initialize(player_one, player_two)
     @deck = []
@@ -21,6 +21,12 @@ class Game
     end
   end
 
+  def first_hand
+    @player_one.hand << @deck.pop
+    @player_one.hand << @deck.pop
+    @player_two.hand << @deck.pop
+    @player_two.hand << @deck.pop
+  end
 
 
 end
