@@ -3,8 +3,8 @@ require 'game'
 describe Card do
 
   it "has a rank and suit" do |variable|
-    person = Card.new("A", :spade)
-    expect(person).to have_attributes(:rank => "A", :suit => :spade)
+    card = Card.new("A", :spade)
+    expect(card).to have_attributes(:rank => "A", :suit => :spade)
   end
 
   it "returns an array of possible ranks" do

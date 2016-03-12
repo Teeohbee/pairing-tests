@@ -1,4 +1,5 @@
 require 'card'
+require 'player'
 
 class Game
 
