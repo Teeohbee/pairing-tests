@@ -1,12 +1,14 @@
-require 'card'
-require 'player'
+require_relative 'card'
+require_relative 'player'
 
 class Game
 
   attr_reader :deck
 
-  def initialize
+  def initialize(player_one, player_two)
     @deck = []
+    @player_one = player_one
+    @player_two = player_two
   end
 
   def create_deck
@@ -18,5 +20,7 @@ class Game
       end
     end
   end
+
+
 
 end
