@@ -15,8 +15,11 @@ describe Player do
   describe "hand_score" do
     it "calculates the score of your hand" do
       player = Player.new("Toby")
-      player.hand << Card.new("J","Spades")
-      player.hand << Card.new("6", "Diamonds")
+      card_one = instance_double "Card", rank: "J", suit: "Spades"
+      card_two = instance_double "Card", rank: "6", suit: "Diamonds"
+      player.hand << card_one
+      player.hand << card_two
+
       expect(player.calculate_score).to eql 16
     end
   end

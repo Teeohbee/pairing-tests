@@ -22,10 +22,10 @@ class Game
   end
 
   def first_hand
-    @player_one.hand << @deck.pop
-    @player_one.hand << @deck.pop
-    @player_two.hand << @deck.pop
-    @player_two.hand << @deck.pop
+    2.times do
+      @player_one.hand << @deck.pop
+      @player_two.hand << @deck.pop
+    end
   end
 
 
