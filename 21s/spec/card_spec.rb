@@ -15,4 +15,12 @@ describe Card do
     expect(Card.suits).to eql ["Spades", "Hearts", "Diamonds", "Clubs"]
   end
 
+  it "should have a value of ten for face cards" do
+    facecards = ["J", "Q", "K"]
+    facecards.each do |facecard|
+      card = Card.new(facecard, :spade)
+      card.value.should eq(10)
+    end
+  end
+
 end
