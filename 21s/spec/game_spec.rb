@@ -22,4 +22,18 @@ describe Game do
     end
   end
 
+  describe "blackjack?" do
+    it "confirms a win scenario" do
+      player = double :player
+      winning_player = double :player
+      allow(player).to receive(:hand) { [] }
+      allow(winning_player).to receive(:hand) { [] }
+      allow(winning_player).to receive(:calculate_score) { 21 }
+      game = Game.new(player, winning_player)
+      game.create_deck
+      game.first_hand
+      expect(game.blackjack?(winning_player)).to eql true
+    end
+  end
+
 end

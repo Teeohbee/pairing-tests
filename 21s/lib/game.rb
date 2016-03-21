@@ -19,6 +19,7 @@ class Game
         @deck << Card.new( ranks[i], suit)
       end
     end
+    @deck = @deck.shuffle
   end
 
   def first_hand
@@ -26,6 +27,10 @@ class Game
       @player_one.hand << @deck.pop
       @player_two.hand << @deck.pop
     end
+  end
+
+  def blackjack?(player)
+    player.calculate_score == 21
   end
 
 
