@@ -1,5 +1,6 @@
 require_relative 'card'
 require_relative 'player'
+require_relative 'deck'
 require 'byebug'
 
 class Game
@@ -33,6 +34,5 @@ class Game
   def blackjack?(player)
     player.calculate_score == 21
   end
-
 
 end
