@@ -8,26 +8,19 @@ class Game
   attr_reader :deck, :player_one, :player_two
 
   def initialize(player_one, player_two)
-    @deck = []
+    @deck = Deck.new
     @player_one = player_one
     @player_two = player_two
   end
 
   def create_deck
-    ranks = Card.ranks
-    suits = Card.suits
-    suits.each do |suit|
-      ranks.size.times do |i|
-        @deck << Card.new( ranks[i], suit)
-      end
-    end
-    @deck = @deck.shuffle
+    @deck = Deck.new.cards
   end
 
   def first_hand
     2.times do
-      @player_one.hand << @deck.pop
-      @player_two.hand << @deck.pop
+      @player_one.hand << @deck.shift
+      @player_two.hand << @deck.shift
     end
   end
 
