@@ -13,4 +13,10 @@ class Card
     @rank = rank
     @suit = suit
   end
+
+  def value
+    return 10 if ["J","Q","K"].include?(@rank)
+    return 11 if @rank == "A"
+    return @rank.to_i
+  end
 end

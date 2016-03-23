@@ -9,13 +9,7 @@ attr_reader :name, :hand
   def calculate_score
     sum = 0
     @hand.each do |card|
-      if card.rank == "J" || card.rank == "Q" || card.rank == "K"
-        sum += 10
-      elsif card.rank == "A"
-        sum += 11
-      else
-        sum += card.rank.to_i
-      end
+      sum += card.value
     end
     sum
   end

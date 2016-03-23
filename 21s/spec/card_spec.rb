@@ -19,8 +19,18 @@ describe Card do
     facecards = ["J", "Q", "K"]
     facecards.each do |facecard|
       card = Card.new(facecard, :spade)
-      card.value.should eq(10)
+      expect(card.value).to eql(10)
     end
+  end
+
+  it "should have a value of 7 for the 7 of diamonds" do
+    card = Card.new("7", :diamonds)
+    expect(card.value).to eql(7)
+  end
+
+  it "should have a value of 11 for the Ace of spades" do
+    card = Card.new("A", :spades)
+    expect(card.value).to eql(11)
   end
 
 end
