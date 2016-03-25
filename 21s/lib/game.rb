@@ -11,16 +11,9 @@ class Game
     @deck = Deck.new
     @player_one = player_one
     @player_two = player_two
-  end
-
-  def create_deck
-    @deck = Deck.new.cards
-  end
-
-  def first_hand
     2.times do
-      @player_one.hand << @deck.shift
-      @player_two.hand << @deck.shift
+      @player_one.hit(@deck)
+      @player_two.hit(@deck)
     end
   end
 
