@@ -12,6 +12,21 @@ describe Player do
     expect(player.hand).to eql []
   end
 
+  describe "hit" do
+    it "should add a card to the players hand" do
+      player = Player.new("Toby")
+      deck = instance_double("Deck", :cards => [1,2,3,4])
+      expect{player.hit(deck)}.to change{player.hand.count}.by(1)
+    end
+
+    it "adds the card from the top of the deck to the players hand" do
+      player = Player.new("Toby")
+      deck = instance_double("Deck", :cards => [1,2,3,4])
+      player.hit(deck)
+      expect(player.hand).to eql [1]
+    end
+  end
+
   describe "hand_score" do
     it "calculates the score of your hand" do
       player = Player.new("Toby")

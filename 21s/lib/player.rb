@@ -14,4 +14,8 @@ attr_reader :name, :hand
     sum
   end
 
+  def hit(deck)
+    @hand << deck.cards.shift
+  end
+
 end
