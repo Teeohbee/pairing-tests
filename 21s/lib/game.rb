@@ -21,4 +21,8 @@ class Game
     player.calculate_score == 21
   end
 
+  def bust?(player)
+    player.calculate_score > 21
+  end
+
 end
