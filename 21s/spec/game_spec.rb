@@ -26,12 +26,36 @@ describe Game do
   describe "bust?" do
     it "confirms a bust scenario" do
       player = double :player
+      losing_player = double :player
+      allow(player).to receive(:hit)
+      allow(losing_player).to receive(:hit)
+      allow(losing_player).to receive(:calculate_score) { 22 }
+      game = Game.new(player, losing_player)
+      expect(game.bust?(losing_player)).to eql true
+    end
+  end
+
+  describe "has_a_winner?" do
+    it "confirms a win scenario when a winner receives a blackjack" do
+      player = double :player
       winning_player = double :player
       allow(player).to receive(:hit)
       allow(winning_player).to receive(:hit)
-      allow(winning_player).to receive(:calculate_score) { 22 }
+      allow(player).to receive(:calculate_score) { 13 }
+      allow(winning_player).to receive(:calculate_score) { 21 }
       game = Game.new(player, winning_player)
-      expect(game.bust?(winning_player)).to eql true
+      expect(game.has_a_winner?).to eql "blackjack"
+    end
+
+    it "confirms a win scenario when a loser receives a bust" do
+      player = double :player
+      losing_player = double :player
+      allow(player).to receive(:hit)
+      allow(losing_player).to receive(:hit)
+      allow(player).to receive(:calculate_score) { 13 }
+      allow(losing_player).to receive(:calculate_score) { 22 }
+      game = Game.new(player, losing_player)
+      expect(game.has_a_winner?).to eql "bust"
     end
   end
 

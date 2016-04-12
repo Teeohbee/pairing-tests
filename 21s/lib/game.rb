@@ -17,6 +17,14 @@ class Game
     end
   end
 
+  def has_a_winner?
+    if blackjack?(@player_one) || blackjack?(@player_two)
+      "blackjack"
+    elsif bust?(@player_one) || bust?(@player_two)
+      "bust"
+    end
+  end
+
   def blackjack?(player)
     player.calculate_score == 21
   end
